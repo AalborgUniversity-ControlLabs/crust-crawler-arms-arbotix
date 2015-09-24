@@ -56,10 +56,25 @@
 #define MX_GOAL_TORQUE_H                72
 #define MX_GOAL_ACCELERATION            73
 
-// Set the PID gains of an MX servo
-void mxSetPidGains(int id, float p_gain, float i_gain, float d_gain);
+// Set the PID gains of an MX servo.
+void SetPidGains(int id, float p_gain, float i_gain, float d_gain);
+
+// Get the voltage supplied to an MX servo.
+float GetVoltage(int id);
+
+// Get the current consumption of an MX servo.
+float GetCurrent(int id);
+
+// Get the present speed of an MX servo.
+float GetSpeed(int id);
+
+// Set the torque setpoint.
+void SetTorque(int id, float torque);
 
 #define GetLowerAngleLimit(id) (ax12GetRegister(id, MX_CW_ANGLE_LIMIT_L, 2))
 #define GetUpperAngleLimit(id) (ax12GetRegister(id, MX_CCW_ANGLE_LIMIT_L, 2))
+
+#define TorqueControlEnable(id) (ax12SetRegister(id, MX_TORQUE_CONTROL_MODE_ENABLE, 1))
+#define TorqueControlDisable(id) (ax12SetRegister(id, MX_TORQUE_CONTROL_MODE_ENABLE, 0))
 
 #endif //DYNAMIXEL_H
