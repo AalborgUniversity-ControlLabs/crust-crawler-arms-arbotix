@@ -12,8 +12,6 @@
 // Import the ax12 library that provides
 // commands to control the Dynamixel servos.
 #include <ax12.h>
-// Additional dynamixel functionality for MX servos.
-#include <dynamixel_mx.h>
 
 void setup(){
   // Setup connection to the pc
